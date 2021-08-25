@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <link href="bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="style.css" rel="stylesheet" media="screen">
+    <script data-require="angular.js@1.0.x" src="http://code.angularjs.org/1.0.7/angular.min.js" data-semver="1.0.7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js" integrity="sha256-H8xrCe0tZFi/C2CgxkmiGksqVaxhW0PFcUKZJZo1yNU=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <div ng-controller="jsonCtrl">
+    <h1>Dummy Application</h1>
+    <h3>Total Customers {{ getTotalCustomer() }}</h3>
+    <h3>Add new customer...</h3>
+    <label>Name</label><input type="text" ng-model="inName"><br /><br />
+
+    <label>Country</label><input type="text" ng-model="inCountry"><br /><br />
+
+    <label>Balance</label><input type="number" ng-model="inBalance"><br /><br />
+
+    <button class="btn" ng-click="addCus()">Add Customer to List<i class="icon-plus"></i></button>
+<br /><br />
+        <label>Search by Name</label>    <input type="text" ng-model="search.name">
+        <br /><br />
+
+        <label>Seach by Country</label> <input type="text" ng-model="search.country"> <br /><br />
+    <table id="displayTable" class="table table-strped">
+        <tr ng-repeat="resource in tellerbook | filter:search">
+            <td>{{resource.name}}</td>
+            <td>{{ resource.country }}</td>
+            <td contentEditable>{{ resource.balance }}           
+              <!--<input type="number" ng-model="inTempBal">
+            <button class="btn" ng-click="addBalance()">Edit Balance<i class="icon-plus"></i></button>-->
+            </td>
+
+        </tr>    
+    </table>
+    <div>
+          <button class="btn" ng-click="save()">Save<i class="icon-plus"></i></button>
+          <div>{{mess}}</div>
+    </div>
+  </div>
+<!--  <div ng-controller="testCtrl">
+    <input type="text" ng-model="myName">
+    <button ng-click="addName()" class="btn">Add</button>
+     <input type="text" ng-model="search">
+    <ul>
+      <li ng-repeat="name in names | filter:search">{{ name.name }}</li>
+    </ul>
+  </div>-->
+  </body>
+
+</html>
